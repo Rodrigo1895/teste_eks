@@ -1,0 +1,34 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: easy-food-api
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /pedido
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: easy-food-pedido-api
+                port:
+                  number: 8080
+    - http:
+        paths:
+          - path: /pagamento
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: easy-food-pagamento-api
+                port:
+                  number: 8080
+    - http:
+        paths:
+          - path: /preparoentrega
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: easy-food-preparoentrega-api
+                port:
+                  number: 8080
